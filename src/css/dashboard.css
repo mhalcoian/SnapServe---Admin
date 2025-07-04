@@ -1,0 +1,17 @@
+.logo{
+    height: 37px;
+    width: 160px;
+}
+#logout-btn
+{
+    background-color: #780A19;
+    color: #FFFFFF;
+    border-radius: 8px;
+    height: 33px;
+    width: 226px;
+    text-align:center;
+    padding-bottom: 30px;
+    margin-top: 10px;
+    font-size: 16px;
+    
+}   
