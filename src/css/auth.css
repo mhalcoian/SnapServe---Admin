@@ -1,14 +1,25 @@
-.logo{
-    width: 240px;;
+.login-form{
+    display: grid;
+    background-color: #FFFFFF;
+    height: 647px;
+    align-content: center;
+    justify-content: center;
+}
+.login-logo{
+    display: grid;
+    width: 240px;
+    justify-content: start;
 }
 
 .subtitle{
     text-align:left;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 100;
     margin-bottom: 3px;
 
 }
 .inputAuth {
+    display: flex;
     height: 36px;
     width:226px;
     justify-content: center;
@@ -19,14 +30,16 @@
 
 #login-btn
 {
+    display: grid;
+    justify-content: center;
     background-color: #780A19;
     color: #FFFFFF;
-    border-radius: 8px;
+    border-radius:8px;
     height: 33px;
     width: 226px;
     text-align:center;
-    padding-bottom: 30px;
     margin-top: 10px;
-    font-size: 16px;
+    padding-top: 5px ;
+    font-size: 14px;
     
 }   

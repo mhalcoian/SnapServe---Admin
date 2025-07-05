@@ -2,7 +2,7 @@ import logo from '/snapserve_logo.jpg'
 
 function Auth() {  
     return <div className="login-form">
-        <img className="logo"src={logo}/>
+        <img className="login-logo"src={logo}/>
     <div>
         <p className='subtitle'>Email address</p>
         <input className="inputAuth" placeholder="example@gmail.com"></input>
