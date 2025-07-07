@@ -98,5 +98,8 @@
   font-size: 16px;
 }
 .statistics{
+    grid-area: content;
     background-color: #FFFFFF;
+    height: 500px;
+    width: 500px;
 }
