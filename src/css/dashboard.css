@@ -28,7 +28,7 @@
     justify-items: center;
     align-content: space-between;
 }
-.container > div.content{
+.content{
     grid-area: content;
     margin: 20px 20px 20px 0px;
     background-color: #FFFFFF;
@@ -61,7 +61,7 @@
     align-items: center;
     margin: 0;
 }
-.menu-icons{
+.menu-icon{
     height: 24px;
     width: 24px;
     padding-right: 23px;
@@ -79,3 +79,24 @@
     padding-top: 5px;
     margin-bottom: 22px; 
 }   
+.dashboard {
+  grid-area: content;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+  height: 186px;
+  width: 516px;
+  margin: 16px 16px 16px 0px;
+}
+.card{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+.statistics{
+    background-color: #FFFFFF;
+}
