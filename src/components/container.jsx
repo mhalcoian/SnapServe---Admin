@@ -5,6 +5,7 @@ import Vendors from "./sections/vendors";
 import Stores from "./sections/stores";
 import Users from "./sections/users";
 import Reports from "./sections/reports";
+import '@fontsource/roboto';
 
 function container() {
   const [isAuth, setIsAuth] = useState(true);
@@ -22,9 +23,9 @@ function container() {
   };
 
   const navItems = [
-    { label: "Dashboard", icon: "d" },
-    { label: "Vendors", icon: "v" },
-    { label: "Stores", icon: "s" },
+    { label: "Dashboard", icon: "/dashboard.svg" },
+    { label: "Vendors", icon: "/vendor.svg" },
+    { label: "Stores", icon: "/store.svg" },
     { label: "Users", icon: "u" },
     { label: "Reports", icon: "r" },
   ];
@@ -76,7 +77,7 @@ function container() {
                       ref={(el) => (navRef.current[i] = el)}
                       onClick={() => setIsActiveIndex(i)}
                     >
-                      <span className="nav-icon">{items.icon}</span>
+                      <span className="nav-icon"><img className="item-icon" src={items.icon}/></span>
                       <span>{items.label}</span>
                     </div>
                   ))}
