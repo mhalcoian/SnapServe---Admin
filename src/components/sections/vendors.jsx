@@ -3,7 +3,7 @@ function vendors() {
     <>
       <div className="vendors-container">
         <div className="add-vendor">
-          <h2>Vendors</h2>
+          <h2 className="vendor-label">Vendors</h2>
           <button className="btn-add-vendors">
             <span>+</span> ADD VENDOR
           </button>

@@ -1,37 +1,38 @@
 .dashboard-container {
   height: 80%;
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
+  margin: 0 0.5rem 0.5rem 0.5rem;
 }
 
 .dashboard-container .dashboard-card-statistics {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .dashboard-card-statistics .dashboard-card-container {
-  height: 30%;
+  height: 50%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(2, 2.2fr);
+  gap: 1.5rem;
 }
 
 .dashboard-card-container .dashboard-card {
-  border-radius: 8px;
+  border-radius: 14px;
   background-color: #fff;
 }
 
 .dashboard-card-statistics .dashboard-statistics {
   height: 70%;
-  border-radius: 8px;
+  border-radius: 14px;
   background-color: #fff;
 }
 
 .dashboard-container .dashboard-content {
   height: 100%;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 14px;
   background-color: #fff;
 }
