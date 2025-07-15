@@ -26,8 +26,8 @@ function container() {
     { label: "Dashboard", icon: "/dashboard.svg" },
     { label: "Vendors", icon: "/vendor.svg" },
     { label: "Stores", icon: "/store.svg" },
-    { label: "Users", icon: "u" },
-    { label: "Reports", icon: "r" },
+    { label: "Users", icon: "/users.svg" },
+    { label: "Reports", icon: "/reports.svg" },
   ];
 
   const renderComponents = [
@@ -63,7 +63,7 @@ function container() {
           <div className="main-container">
             <div className="header">
               <img className="company-logo" src="/snapserve_logo.jpg" alt="" />
-              <div className="bell-icon"></div>
+              <img className="bell-icon" src ="/bellicon.svg"/>
             </div>
             <div className="sub-container">
               <div className="nav-form">
