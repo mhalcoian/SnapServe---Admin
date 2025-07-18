@@ -1,7 +1,11 @@
 function users() {
   return (
     <>
-      <div>Users</div>
+      <div className="users-container">
+        <div className="users-card">users
+
+        </div>
+      </div>
     </>
   );
 }
