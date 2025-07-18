@@ -5,20 +5,31 @@ import Vendors from "./sections/vendors";
 import Stores from "./sections/stores";
 import Users from "./sections/users";
 import Reports from "./sections/reports";
-import '@fontsource/roboto';
+import api from "../api";
+import "@fontsource/roboto";
 
 function container() {
-  const [isAuth, setIsAuth] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
 
   const [activeIndex, setIsActiveIndex] = useState(0);
   const navRef = useRef([]);
   const [indicatorStyle, setIndicatorStyle] = useState({});
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const login = async () => {
+    const { data } = await api.post("/login", { email, password });
+    //localStorage.setItem("accessToken", data.access_token);
+    alert(data.access_token);
+    setIsAuth(true);
+  };
+
   const handleAuthentication = () => {
     if (isAuth) {
       setIsAuth(false);
     } else {
-      setIsAuth(true);
+      login();
     }
   };
 
@@ -57,13 +68,19 @@ function container() {
   return (
     <>
       {!isAuth ? (
-        <Auth handleAuthentication={handleAuthentication} />
+        <Auth
+          email={email}
+          setEmail={setEmail}
+          password={password}
+          setPassword={setPassword}
+          handleAuthentication={handleAuthentication}
+        />
       ) : (
         <>
           <div className="main-container">
             <div className="header">
               <img className="company-logo" src="/snapserve_logo.jpg" alt="" />
-              <img className="bell-icon" src ="/bellicon.svg"/>
+              <img className="bell-icon" src="/bellicon.svg" />
             </div>
             <div className="sub-container">
               <div className="nav-form">
@@ -77,7 +94,9 @@ function container() {
                       ref={(el) => (navRef.current[i] = el)}
                       onClick={() => setIsActiveIndex(i)}
                     >
-                      <span className="nav-icon"><img className="item-icon" src={items.icon}/></span>
+                      <span className="nav-icon">
+                        <img className="item-icon" src={items.icon} />
+                      </span>
                       <span>{items.label}</span>
                     </div>
                   ))}

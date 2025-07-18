@@ -1,4 +1,12 @@
-function auth({ handleAuthentication }) {
+function auth({
+  email,
+  setEmail,
+  password,
+  setPassword,
+  handleAuthentication,
+}) {
+  const data = [email, setEmail, password, setPassword];
+
   return (
     <>
       <div className="login-container">
@@ -8,13 +16,25 @@ function auth({ handleAuthentication }) {
             <label htmlFor="txt-email" className="lbl-email">
               Email address
             </label>
-            <input type="text" id="txt-email" placeholder="example@mail.com" />
+            <input
+              type="text"
+              id="txt-email"
+              placeholder="example@mail.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
 
             <label htmlFor="txt-password" className="lbl-password">
               Password
             </label>
             <div className="password-container">
-              <input type="text" id="txt-password" placeholder="Password" />
+              <input
+                type="text"
+                id="txt-password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
               <div className="show-pass-icon"></div>
             </div>
           </div>
