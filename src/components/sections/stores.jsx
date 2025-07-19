@@ -1,7 +1,11 @@
 function stores() {
   return (
     <>
-      <div>Stores</div>
+      <div className ="stores-container">
+        <div className="stores-card"> stores
+
+        </div>
+       </div>
     </>
   );
 }

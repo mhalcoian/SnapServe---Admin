@@ -1,6 +1,6 @@
 .main-container {
   height: 100vh;
-  background: #eee;
+  background: #f1f1f1;
 }
 
 .main-container .header {
@@ -65,7 +65,7 @@
   color: rgba(0, 129, 255, 1);
 }
 .nav-items .nav-icon{
-  background: gray;
+  background: #8E8E93;
   max-height: 1.2rem;
   max-height: 24px;
   max-width: 24px;

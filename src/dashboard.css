@@ -21,7 +21,28 @@
 
 .dashboard-card-container .dashboard-card {
   border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-left: 1.8rem;
   background-color: #fff;
+  font-family: "Roboto";
+}
+
+.dashboard-card-container .dashboard-icon-vendor{
+  background-color:#4F45B6;
+  height: 32px;
+  width: 32px;
+}
+.dashboard-card-container .dashboard-icon-stores{
+  background-color:#F58869;
+  height: 32px;
+  width: 32px;
+}
+.dashboard-card-container .dashboard-icon-users{
+  background-color:#64C4F7;
+  height: 32px;
+  width: 32px;
 }
 
 .dashboard-card-statistics .dashboard-statistics {

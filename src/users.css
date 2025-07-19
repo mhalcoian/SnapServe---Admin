@@ -1,0 +1,13 @@
+.users-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 0.5rem 0.5rem 0.5rem;
+}
+
+
+.users-container .users-card {
+  background-color: #ffffff;
+  height: 86vh;
+  border-radius: 14px;
+}
