@@ -9,6 +9,7 @@ import "./vendors.css";
 import "./stores.css";
 import "./users.css";
 import "./reports.css";
+import "./modal.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

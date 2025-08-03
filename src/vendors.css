@@ -3,6 +3,9 @@
   display: flex;
   flex-direction: column;
   margin: 0 0.5rem 0.5rem 0.5rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ddd transparent;
 }
 
 .add-vendor {
@@ -11,7 +14,7 @@
   justify-content: space-between;
   margin: 0.8rem 0.5rem 1.3rem 1.5rem;
 }
-.add-vendor .vendor-label{
+.add-vendor .vendor-label {
   font-family: "Roboto";
 }
 .add-vendor .btn-add-vendors {
@@ -26,13 +29,17 @@
 }
 
 .table-container {
-  padding: 2rem;
+  padding: 1rem;
   height: 100%;
   border-radius: 14px;
   background-color: #fff;
 }
 
 .table-responsive {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   overflow: hidden;
@@ -96,4 +103,11 @@
 
 .icon:hover {
   opacity: 0.8;
+}
+
+.pagination-container {
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

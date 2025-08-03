@@ -9,7 +9,7 @@ import api from "../api";
 import "@fontsource/roboto";
 
 function container() {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(true);
 
   const [activeIndex, setIsActiveIndex] = useState(0);
   const navRef = useRef([]);
