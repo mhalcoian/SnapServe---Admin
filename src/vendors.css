@@ -1,5 +1,5 @@
 .vendors-container {
-  height: 100%;
+  max-height: 85vh;
   display: flex;
   flex-direction: column;
   margin: 0 0.5rem 0.5rem 0.5rem;
@@ -71,6 +71,14 @@
   margin-bottom: 10px;
 }
 
+.icon-profile {
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
 .pill {
   padding: 5px 12px;
   border-radius: 9999px;
@@ -106,8 +114,41 @@
 }
 
 .pagination-container {
-  margin: 1rem;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-top: 1px solid #e5e7eb;
+  background-color: #f9f9f9;
+}
+
+.pagination-info {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.pagination {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.page-button {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background-color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.page-button.active {
+  background-color: rgba(0, 159, 255, 1);
+  color: #fff;
+  border-color: rgba(0, 159, 255, 1);
+}
+
+.page-button:hover {
+  background-color: #e0f2ff;
 }
