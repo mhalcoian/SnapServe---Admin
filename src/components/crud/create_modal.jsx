@@ -1,16 +1,9 @@
-import { useState } from "react";
-
-const CreateModal = ({ setIsModalOpen, handleAddVendor }) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    owner: "",
-    tin: "",
-    email: "",
-    contact: "",
-    countryCode: "+63",
-    logo: null,
-  });
-
+function CreateModal({
+  setIsModalOpen,
+  handleAddVendor,
+  formData,
+  setFormData,
+}) {
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     setFormData((prev) => ({
@@ -146,6 +139,6 @@ const CreateModal = ({ setIsModalOpen, handleAddVendor }) => {
       </div>
     </div>
   );
-};
+}
 
 export default CreateModal;

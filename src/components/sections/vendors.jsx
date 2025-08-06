@@ -1,86 +1,54 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CreateModal from "../crud/create_modal";
+import ValidationModal from "../checker/validation_modal";
 
 function vendors() {
   const [currentPage, setCurrentPage] = useState(1);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    owner: "",
+    tin: "",
+    email: "",
+    contact: "",
+    countryCode: "+63",
+    logo: null,
+    status: "Active",
+    due_date: "21/01/2027",
+  });
+
+  const [selectedVendorIndex, setSelectedVendorIndex] = useState(null);
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+
+  const [actionText, setActionText] = useState("");
 
   const ITEMS_PER_PAGE = 10;
 
-  const vendorsData = [
+  const [vendorsData, setVendorsData] = useState([
     {
       name: "Cherry Mae",
+      owner: "Cherry Mae",
       tin: "86813425",
+      email: "cherry@example.com",
+      contact: "98765432101",
+      countryCode: "+63",
+      logo: null,
       status: "Active",
-      due_date: "21/09/2025",
+      due_date: "21/01/2026",
     },
     {
       name: "Lyneth Escuadero",
-      tin: "87654321",
-      status: "Inactive",
-      due_date: "21/01/2025",
-    },
-    {
-      name: "Cherry Mae",
+      owner: "Lyneth Escuadero",
       tin: "86813425",
-      status: "Active",
-      due_date: "21/09/2025",
-    },
-    {
-      name: "Lyneth Escuadero",
-      tin: "87654321",
+      email: "lyn@example.com",
+      contact: "98765432101",
+      countryCode: "+63",
+      logo: null,
       status: "Inactive",
       due_date: "21/01/2025",
     },
-    {
-      name: "Cherry Mae",
-      tin: "86813425",
-      status: "Active",
-      due_date: "21/09/2025",
-    },
-    {
-      name: "Lyneth Escuadero",
-      tin: "87654321",
-      status: "Inactive",
-      due_date: "21/01/2025",
-    },
-    {
-      name: "Cherry Mae",
-      tin: "86813425",
-      status: "Active",
-      due_date: "21/09/2025",
-    },
-    {
-      name: "Lyneth Escuadero",
-      tin: "87654321",
-      status: "Inactive",
-      due_date: "21/01/2025",
-    },
-    {
-      name: "Cherry Mae",
-      tin: "86813425",
-      status: "Active",
-      due_date: "21/09/2025",
-    },
-    {
-      name: "Lyneth Escuadero",
-      tin: "87654321",
-      status: "Inactive",
-      due_date: "21/01/2025",
-    },
-    {
-      name: "Cherry Mae",
-      tin: "86813425",
-      status: "Active",
-      due_date: "21/09/2025",
-    },
-    {
-      name: "Lyneth Escuadero",
-      tin: "87654321",
-      status: "Inactive",
-      due_date: "21/01/2025",
-    },
-  ];
+  ]);
 
   const totalPages = Math.ceil(vendorsData.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -94,8 +62,28 @@ function vendors() {
   };
 
   const handleAddVendor = (vendor) => {
-    console.log("Vendor submitted:", vendor);
-    // Save to backend or update local state
+    if (selectedVendorIndex !== null) {
+      setVendorsData((prev) =>
+        prev.map((v, i) => (i === selectedVendorIndex ? { ...vendor } : v))
+      );
+    } else {
+      setVendorsData((prev) => [...prev, vendor]);
+    }
+
+    setFormData({
+      name: "",
+      owner: "",
+      tin: "",
+      email: "",
+      contact: "",
+      countryCode: "+63",
+      logo: null,
+      status: "Active",
+      due_date: "21/01/2027",
+    });
+
+    setIsModalOpen(false);
+    setSelectedVendorIndex(null);
   };
 
   return (
@@ -105,7 +93,9 @@ function vendors() {
           <h2 className="vendor-label">Vendors</h2>
           <button
             className="btn-add-vendors"
-            onClick={() => setIsModalOpen(true)}
+            onClick={() => {
+              setIsModalOpen(true);
+            }}
           >
             <span>+</span> ADD VENDOR
           </button>
@@ -113,8 +103,44 @@ function vendors() {
 
         {isModalOpen && (
           <CreateModal
-            setIsModalOpen={() => setIsModalOpen(false)}
+            setIsModalOpen={() => {
+              setIsModalOpen(false);
+              setFormData({
+                name: "",
+                owner: "",
+                tin: "",
+                email: "",
+                contact: "",
+                countryCode: "+63",
+                logo: null,
+                status: "Active",
+                due_date: "21/01/2027",
+              });
+            }}
             handleAddVendor={handleAddVendor}
+            formData={formData}
+            setFormData={setFormData}
+          />
+        )}
+
+        {isConfirmModalOpen && (
+          <ValidationModal
+            onClose={() => setIsConfirmModalOpen(false)}
+            onConfirm={() => {
+              setVendorsData((prev) =>
+                prev.map((vendor, i) =>
+                  i === selectedVendorIndex
+                    ? {
+                        ...vendor,
+                        status:
+                          vendor.status === "Active" ? "Inactive" : "Active",
+                      }
+                    : vendor
+                )
+              );
+              setIsConfirmModalOpen(false);
+            }}
+            actionText={actionText}
           />
         )}
 
@@ -123,6 +149,7 @@ function vendors() {
             <table className="table-form">
               <thead className="table-header">
                 <tr>
+                  <th></th>
                   <th>Name</th>
                   <th>TIN</th>
                   <th>Status</th>
@@ -133,6 +160,21 @@ function vendors() {
               <tbody className="table-data">
                 {currentItems.map((vendor, index) => (
                   <tr key={index}>
+                    <td>
+                      {vendor.logo ? (
+                        <img
+                          src={URL.createObjectURL(vendor.logo)}
+                          alt={vendor.logo}
+                          className="icon-profile"
+                        />
+                      ) : (
+                        <img
+                          src={vendor.logo}
+                          alt={vendor.logo}
+                          className="icon-profile"
+                        />
+                      )}
+                    </td>
                     <td>{vendor.name}</td>
                     <td>{vendor.tin}</td>
                     <td>
@@ -142,8 +184,28 @@ function vendors() {
                     </td>
                     <td>{vendor.due_date}</td>
                     <td>
-                      <button className="icon edit">✏️</button>
-                      <button className="icon toggle-status">
+                      <button
+                        className="icon edit"
+                        onClick={() => {
+                          setSelectedVendorIndex(startIndex + index);
+                          setFormData(vendor);
+                          setIsModalOpen(true);
+                        }}
+                      >
+                        ✏️
+                      </button>
+                      <button
+                        className="icon toggle-status"
+                        onClick={() => {
+                          setSelectedVendorIndex(startIndex + index);
+                          setIsConfirmModalOpen(true);
+                          {
+                            vendor.status === "Active"
+                              ? setActionText("proceed")
+                              : setActionText("submit");
+                          }
+                        }}
+                      >
                         {vendor.status === "Active" ? "🚫" : "✅"}
                       </button>
                     </td>
