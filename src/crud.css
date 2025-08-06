@@ -1,4 +1,4 @@
-.vendors-container {
+.container {
   max-height: 85vh;
   display: flex;
   flex-direction: column;
@@ -8,16 +8,16 @@
   scrollbar-color: #ddd transparent;
 }
 
-.add-vendor {
+.add {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 0.8rem 0.5rem 1.3rem 1.5rem;
 }
-.add-vendor .vendor-label {
+.add .label {
   font-family: "Roboto";
 }
-.add-vendor .btn-add-vendors {
+.add .btn-add {
   font-family: "Roboto";
   font-weight: bold;
   border-radius: 8px;
@@ -118,37 +118,46 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  border-top: 1px solid #e5e7eb;
-  background-color: #f9f9f9;
+  background: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  font-family: "Segoe UI", sans-serif;
 }
 
 .pagination-info {
-  font-size: 0.85rem;
-  color: #555;
+  font-size: 0.9rem;
+  color: #666;
 }
 
 .pagination {
   display: flex;
-  gap: 0.5rem;
-  align-items: center;
+  gap: 0.4rem;
 }
 
 .page-button {
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  background-color: white;
-  border-radius: 6px;
-  cursor: pointer;
+  padding: 8px 14px;
   font-size: 0.9rem;
-  transition: all 0.2s;
-}
-
-.page-button.active {
-  background-color: rgba(0, 159, 255, 1);
-  color: #fff;
-  border-color: rgba(0, 159, 255, 1);
+  border: none;
+  border-radius: 8px;
+  background-color: #f1f5f9;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .page-button:hover {
-  background-color: #e0f2ff;
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.page-button.active {
+  background-color: #1e40af;
+  color: white;
+  font-weight: bold;
+}
+
+.page-button:disabled {
+  background-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
 }
