@@ -5,10 +5,7 @@ import "./index.css";
 import "./container.css";
 import "./auth.css";
 import "./dashboard.css";
-import "./vendors.css";
-import "./stores.css";
-import "./users.css";
-import "./reports.css";
+import "./crud.css";
 import "./modal.css";
 
 createRoot(document.getElementById("root")).render(

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CreateModal from "../crud/create_modal";
 import ValidationModal from "../checker/validation_modal";
 
@@ -88,11 +88,11 @@ function vendors() {
 
   return (
     <>
-      <div className="vendors-container">
-        <div className="add-vendor">
-          <h2 className="vendor-label">Vendors</h2>
+      <div className="container">
+        <div className="add">
+          <h2 className="label">Vendors</h2>
           <button
-            className="btn-add-vendors"
+            className="btn-add"
             onClick={() => {
               setIsModalOpen(true);
             }}
@@ -219,20 +219,45 @@ function vendors() {
                 {Math.min(startIndex + ITEMS_PER_PAGE, vendorsData.length)} from{" "}
                 {vendorsData.length} data
               </p>
+
               <div className="pagination">
-                {"<-"}
-                {Array.from({ length: totalPages }, (_, i) => (
-                  <button
-                    key={i + 1}
-                    className={`page-button ${
-                      currentPage === i + 1 ? "active" : ""
-                    }`}
-                    onClick={() => handlePageChange(i + 1)}
-                  >
-                    {i + 1}
-                  </button>
-                ))}
-                {"->"}
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(prev - 1, 1))
+                  }
+                  disabled={currentPage === 1}
+                >
+                  «
+                </button>
+
+                {Array.from({ length: totalPages }, (_, i) => i + 1)
+                  .filter((page) => {
+                    if (totalPages <= 3) return true;
+                    if (currentPage === 1) return page <= 3;
+                    if (currentPage === totalPages)
+                      return page >= totalPages - 2;
+                    return Math.abs(page - currentPage) <= 1;
+                  })
+                  .map((page) => (
+                    <button
+                      key={page}
+                      className={`page-button ${
+                        page === currentPage ? "active" : ""
+                      }`}
+                      onClick={() => handlePageChange(page)}
+                    >
+                      {page}
+                    </button>
+                  ))}
+
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                  }
+                  disabled={currentPage === totalPages}
+                >
+                  »
+                </button>
               </div>
             </div>
           </div>
